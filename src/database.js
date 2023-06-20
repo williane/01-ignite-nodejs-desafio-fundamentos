@@ -47,6 +47,9 @@ export class Database {
 
   update(table, id, data) {
     const rowIndex = this.#database[table].findIndex(row => row.id === id)
+    if(rowIndex == -1){
+      throw new Error('ID incorreto, não encontrado dados para ID informado')
+    }
     const currentData = this.#database[table][rowIndex]
     const completed_at = data['completed_at'] ? data['completed_at'] : null
 
