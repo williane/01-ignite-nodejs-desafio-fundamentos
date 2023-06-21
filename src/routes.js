@@ -65,7 +65,7 @@ export const routes = [
     path: buildRoutePath("/tasks/:id"),
     handler: (req, res) => {
       const { id } = req.params;
-      
+
       try {
         const { title, description } = req.body;
         if (!title) {
@@ -80,9 +80,11 @@ export const routes = [
           description,
         });
       } catch (error) {
-        return res.writeHead(400).end(JSON.stringify({
-          data: error.toString()
-        }));
+        return res.writeHead(400).end(
+          JSON.stringify({
+            data: error.toString(),
+          })
+        );
       }
 
       return res.writeHead(204).end();
